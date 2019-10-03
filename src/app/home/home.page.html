@@ -1,14 +1,40 @@
+<!--
+  Generated template for the HomePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
+    <ion-title>home</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
-  </div>
+<ion-content padding>
+
+   <input type="text" placeholder="Email address" [(ngModel)]="email">
+
+   <input type="password" placeholder="password" [(ngModel)]="password">
+   
+   <ion-button color="primary" (click)="add()">ADD</ion-button>
+   
+   <ion-button color="primary" (click)="get()">GET</ion-button>
+   
+   <ion-button color="primary" (click)="update()">UPDATE</ion-button>
+   
+   <ion-button color="primary" (click)="delete()">DELETE</ion-button>
+
+   <table style="width:100%;">
+   	 <tr>
+   	  <th>ID</th>
+   	  <th>Email</th>
+   	  <th>Password</th>
+   	 </tr>
+   	 <tr *ngFor="let data of credential">
+	    <td>{{data.id}}</td>
+	    <td>{{data.email}}</td>
+	    <td>{{data.password}}</td>
+     </tr> 
+   </table>
+
 </ion-content>
