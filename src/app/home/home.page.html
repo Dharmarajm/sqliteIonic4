@@ -22,7 +22,7 @@
    
    <ion-button color="primary" (click)="update()">UPDATE</ion-button>
    
-   <ion-button color="primary" (click)="delete()">DELETE</ion-button>
+   <ion-button color="primary" (click)="delete(id)">DELETE</ion-button>
 
    <table style="width:100%;">
    	 <tr>
@@ -30,7 +30,7 @@
    	  <th>Email</th>
    	  <th>Password</th>
    	 </tr>
-   	 <tr *ngFor="let data of credential">
+   	 <tr *ngFor="let data of credential" (click)="edit(data)">
 	    <td>{{data.id}}</td>
 	    <td>{{data.email}}</td>
 	    <td>{{data.password}}</td>

@@ -17,8 +17,8 @@ export class HomePage {
   constructor(private settingService: SettingProvider,public database:DatabaseProvider) {
   }
 
-  ionViewWillLoad() {
-
+  ionViewDidEnter() {
+    // this.credential=[{"id":1,"email":"dharmaraj@gmail.com","password":"123456"},{"id":2,"email":"dharmaraj23@gmail.com","password":"123456"}]
     this.settingService.getAll()
       .then((settings: Setting[]) => {
         this.credential = settings;
@@ -28,11 +28,6 @@ export class HomePage {
 
   }
 
-  ionViewDidLoad() {
-
-    console.log('ionViewDidLoad HomePage');
-    
-  }
 
   add(){
    
@@ -46,13 +41,13 @@ export class HomePage {
 
   get(){
 
-     this.ionViewWillLoad();
+     this.ionViewDidEnter();
 
   }
 
   update(){
 
-    this.database.updateCredential(this.email,this.password,1).then((res)=>{
+    this.database.updateCredential(this.email,this.password,this.id).then((res)=>{
       console.log(res)
     },(error)=>{
       console.log(error)
@@ -60,13 +55,20 @@ export class HomePage {
 
   }
 
-  delete(){
+  delete(id){
 
-    this.database.deleteCredential(1).then((res)=>{
+    this.database.deleteCredential(id).then((res)=>{
       console.log(res)
     },(error)=>{
       console.log(error)
     })
 
+  }
+
+  edit(data){
+   this.id=data.id;
+   this.email=data.email;
+   this.password=data.password;
+   alert(JSON.stringify(data))
   }
 }
