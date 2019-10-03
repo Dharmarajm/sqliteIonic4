@@ -13,7 +13,7 @@ export class HomePage {
   credential: Setting[];
   email:string;
   password:string;
-
+  id:number;
   constructor(private settingService: SettingProvider,public database:DatabaseProvider) {
   }
 
